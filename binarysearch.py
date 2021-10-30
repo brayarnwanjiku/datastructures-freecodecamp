@@ -31,19 +31,22 @@ tests.append({'input':{'cards':[13, 11, 10, 9, 8,8, 8,8,8,8,6,6,6,6, 6, 5, 3], '
     2. compare the middle number to the target number and if equal, return 
     3. if query is less than the query, search the first half of the list else: 
     4. search the second part of the list """
-import math #To help with conversion of decimal to integers if the length of the list is even 
-def binarysearch(cards, query): 
-    high, low = 0, len(cards)-1
-    while low <= high: #To ensure that we have at least one element in the list
-        middle = low + (high + low)//2
-        middle_number = list[middle]
-        print("Lo: ", low, "Hi: ", high, "Middle_number: ", middle_number)
-        if query == middle_number:
-            return middle
-        elif query < middle_number: 
-            high= middle +1 
-        else: 
-            high = middle -1 
-    return -1 
+def locate_card(cards, query):
+    lo, hi = 0, len(cards) - 1
+    
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        mid_number = cards[mid]
+        
+        print("lo:", lo, ", hi:", hi, ", mid:", mid, ", mid_number:", mid_number)
+        
+        if mid_number == query:
+            return mid
+        elif mid_number < query:
+            hi = mid - 1  
+        elif mid_number > query:
+            lo = mid + 1
+    
+    return -1
 
-print(binarysearch(**tests[0]['input']) == tests[0]['output'])
+print(locate_card(**tests[0]['input']) == tests[0]['output'])
