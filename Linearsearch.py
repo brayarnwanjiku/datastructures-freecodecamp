@@ -68,3 +68,13 @@ i.e while position < len(cards) """
 In the brute force method, we are accessing the element once (n times where n is the numbber of elements in the list)
 worst case scenario - n x number of time - we always consider the worst case scenario unless stated otherwise
 """
+"""To better visualize the downsides(time complexity of a linear search), lets define a large enough test case and see how the algo performs"""
+large_test = { 
+'input': {'cards': list(range(10000000, 0, -1)), 'query':2}, 
+#we just defined a list that runs from 10000000 to 0 
+'output': 9999998
+}
+result, passed, runtime = evaluate_test_case(linear_locate_card, large_test, display=False)
+print("Result: {}\nPassed: {}\nExecution Time: {} ms".format(result, passed, runtime))
+#The test takes 2172.534ms
+#This is due to the time complexity of the algo - O(N) - this case being on of the worst case scenarios
