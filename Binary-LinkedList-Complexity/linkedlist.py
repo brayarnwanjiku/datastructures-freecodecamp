@@ -52,12 +52,47 @@ class LinkedList1():
             while current_node.next is not None: # traverses the list up to the last node 
                 current_node = current_node.next
             current_node.next = Node(value)
+    #Now let us add a method to print all the elements in the list 
+    def show_elements(self): 
+        current = self.head
+        while current is not None: 
+            print(current.data)
+            current = current.next
+
+    #we can now add some more functions such as to get the length and get element function 
+    #length function 
+    def length(self): 
+        current = self.head
+        result = 0
+        while current is not None: 
+            result+=1
+            current = current.next
+        return result
+    #implementing the get element function 
+    def get_element(self, position): 
+        i = 0 
+        current = self.head 
+        while current is not None: 
+            if i == position: 
+                return current.data
+            current = current.next 
+            i += 1 
+        return None
+
+
+        
+
+    
 
 #adding the previously created node objects to this implementation 
 list2 = LinkedList1()
 list2.append(1)
 list2.append(2)
 list2.append(3)
+list2.append(4)
 
 print(list2.head.data, list2.head.next.data, list2.head.next.next.data, "This is the result ")
-
+list2.show_elements()
+list2length = list2.length
+print(list2length())
+print(list2.get_element(0))
